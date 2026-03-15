@@ -1,0 +1,25 @@
+name: PL/SQL CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Check SQL syntax (Basic)
+        run: |
+          # This is a placeholder for actual PL/SQL compilation check.
+          # In a real scenario, you'd use SQLcl or a containerized Oracle DB.
+          echo "Checking SQL syntax for all files in plsql/ and sql/"
+          for file in sql/*.sql plsql/*.sql; do
+            echo "Checking $file..."
+            # Simple check for basic SQL structure
+            grep -qiE "CREATE|REPLACE|PACKAGE|PROCEDURE|FUNCTION|TABLE|SEQUENCE" "$file" || (echo "Invalid SQL structure in $file" && exit 1)
+          done
+          echo "Basic syntax check passed."

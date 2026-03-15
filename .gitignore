@@ -1,0 +1,9 @@
+*.log
+*.sql~ 
+*.swp
+.DS_Store
+*.class
+*.zip
+oracle_wallet/*
+apex/data/*
+secrets/*
